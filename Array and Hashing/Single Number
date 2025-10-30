@@ -1,0 +1,29 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        HashMap<Integer , Integer> d = new HashMap<>();
+        Integer n=0;
+        for(Integer i : nums)
+        {
+            if(d.containsKey(i))
+            {
+                d.put(i , d.get(i)+1);
+            }
+            else
+            {
+                d.put(i , 1);
+            }
+        }
+        for(Integer i : nums)
+        {
+            if(d.get(i)==1)
+            {
+                n=i;
+            }
+            else
+            {
+                continue;
+            }
+        }
+        return n;
+    }
+}
