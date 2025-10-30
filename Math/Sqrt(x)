@@ -1,0 +1,17 @@
+class Solution {
+    public int mySqrt(int x) {
+        long i=0;
+        long last=0;
+        while(i*i <= x)
+        {
+            if(i*i == x)
+                return (int)i;
+            else
+            {
+                last=i;
+               i+=1; 
+            }       
+        }
+        return (int) last;
+    }
+}
