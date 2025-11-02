@@ -1,0 +1,58 @@
+class Solution {
+
+    public int len(String str) {
+        char first = str.charAt(0);
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i) != first)
+                return -1;
+        }
+        return str.length();
+    }
+
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0)
+            return "";
+
+        HashMap<Integer, String> h = new HashMap<>();
+
+        for (int i = 0; i < strs.length; i++) {
+            for (int j = 0; j < strs[i].length(); j++) {
+                if (h.containsKey(j)) {
+                    h.put(j, h.get(j) + strs[i].charAt(j));
+                } else {
+                    h.put(j, "" + strs[i].charAt(j));
+                }
+            }
+        }
+
+        String res = ""; 
+        for(int i=0; i<h.size(); i++)     
+        { 
+            if(h.get(i).length()==strs.length 
+                    && len( h.get(i) )!=-1 ) 
+            { 
+                res=res+h.get(i).charAt(0); 
+            } 
+            else
+            { 
+                break; 
+            } 
+        } 
+        return res;
+    }
+}
+
+
+// class Solution {
+//     public String longestCommonPrefix(String[] strs) {
+//         if (strs == null || strs.length == 0) return "";
+//         String prefix = strs[0];
+//         for (int i = 1; i < strs.length; i++) {
+//             while (!strs[i].startsWith(prefix)) {
+//                 prefix = prefix.substring(0, prefix.length() - 1);
+//                 if (prefix.isEmpty()) return "";
+//             }
+//         }
+//         return prefix;
+//     }
+// }
