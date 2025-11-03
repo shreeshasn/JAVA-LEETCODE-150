@@ -1,4 +1,7 @@
-class Solution {
+import java.util.HashMap;
+
+public class single_number
+{
     public int singleNumber(int[] nums) {
         HashMap<Integer , Integer> d = new HashMap<>();
         Integer n=0;
@@ -26,4 +29,17 @@ class Solution {
         }
         return n;
     }
+
+    public  void main(String[] args) {
+        int[] nums = {4,2,2,2,5,5,6,5,5};
+        System.out.println(singleNumber(nums));
+
+        int sum=0;
+        for(int i : nums)
+        {
+            sum = sum^i;
+        }
+        System.out.println(sum); 
+    }
+
 }
