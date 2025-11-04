@@ -1,0 +1,29 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        if(nums.length==1)
+            return nums[0];
+        HashMap<Integer , Integer> h = new HashMap<>();
+        for(int i : nums)
+        {
+            if(h.containsKey(i))
+            {
+                h.put(i , h.get(i)+1);
+            }
+            else
+            {
+                h.put(i, 1);
+            }
+        }
+            int max=0;  int maxi=0;
+            for(int i : h.keySet())
+            {
+                if( h.get(i) > max )
+                {
+                    maxi=i;
+                    max = h.get(i);
+                }
+
+            }
+        return maxi;
+    }
+}
