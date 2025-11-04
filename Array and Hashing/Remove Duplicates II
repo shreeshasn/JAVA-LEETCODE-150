@@ -1,0 +1,44 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        if(nums.length==1)
+            return 1;
+        TreeMap<Integer , Integer> h = new TreeMap<>();
+        int sum=0;
+        for(int i=0; i<nums.length;)
+        {
+            if( h.containsKey(nums[i]) )
+            {
+                    h.put(nums[i] , h.get(nums[i])+1);
+                    i = i+1;
+            }
+            else
+            {
+                h.put( nums[i] , 1);
+                i = i+1;
+            }
+        }
+        int j=0;
+        for(int i : h.keySet())
+        {
+            if( h.get(i) >=2 )
+            {
+                nums[j]=i;
+                nums[j+1]=i;
+                j=j+2;
+            }
+            else
+            {
+                nums[j]=i;
+                j=j+1;
+            }         
+        }
+
+        for(int k=j; k<nums.length; k++)
+            nums[k]='\0';
+        for(int i : h.values())
+        {
+            sum+=i;
+        }
+        return sum;
+    }
+}
