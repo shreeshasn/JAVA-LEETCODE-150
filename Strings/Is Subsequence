@@ -1,0 +1,15 @@
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        int sc = 0;
+        for(int tc = 0; tc<t.length() && sc<s.length();)
+        {
+            if( s.charAt(sc) == t.charAt(tc) )
+            {
+                sc = sc+1;   tc = tc+1;
+            }
+            else
+                tc = tc + 1;
+        }
+        return ( sc >= s.length() ) ? true : false;
+    }
+}
