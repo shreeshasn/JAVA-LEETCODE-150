@@ -1,0 +1,20 @@
+class Solution {
+    public boolean canConstruct(String ran, String mag) {
+        char[] r = ran.toCharArray();
+        char[] m = mag.toCharArray();
+        Arrays.sort(r);
+        Arrays.sort(m);
+
+        int rc=0;
+        for(int mc=0; rc<r.length && mc<m.length;)
+        {
+            if( r[rc] == m[mc] )
+            {
+                mc = mc + 1;    rc = rc + 1;
+            }
+            else
+                mc = mc + 1; 
+        }
+        return ( rc >= ran.length() ) ? true : false;
+    }
+}
